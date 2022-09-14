@@ -1,0 +1,2 @@
+# lvim-config
+Config LunarVim
