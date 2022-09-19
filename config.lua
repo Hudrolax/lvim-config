@@ -1,4 +1,4 @@
---[[
+[
 lvim is the global options object
 
 Linters should be
@@ -160,14 +160,31 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+    {"folke/tokyonight.nvim"},
+    {"sbdchd/neoformat"},
+    {"ellisonleao/gruvbox.nvim"},
+    -- {"nvim-lua/popup.nvim"},
+    -- {"nvim-lua/plenary.nvim"},
+    -- {"nvim-telescope/telescope.nvim"},
+    {"nvim-telescope/telescope-media-files.nvim"},
+    -- {
+    --   "folke/trouble.nvim",
+    --   cmd = "TroubleToggle",
+    -- },
+}
 
+require('telescope').load_extension('media_files')
+require'telescope'.setup {
+  extensions = {
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = {"png", "webp", "jpg", "jpeg"},
+      find_cmd = "rg" -- find command (defaults to `fd`)
+    }
+  },
+}
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
@@ -181,9 +198,12 @@ lvim.builtin.treesitter.highlight.enabled = true
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
 -- })
-lvim.builtin.nvimtree.setup.view.relativenumber = true
+-- lvim.builtin.nvimtree.setup.view.relativenumber = true
 vim.opt.backup = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
+lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
+lvim.keys.normal_mode["<S-Enter>"] = "o<ESC>"
+lvim.keys.normal_mode["<space>lf"] = ":Neoformat<cr>"
