@@ -18,3 +18,11 @@ Install Windows PowerShell:
 ```
 Invoke-WebRequest https://raw.githubusercontent.com/LunarVim/LunarVim/master/utils/installer/install.ps1 -UseBasicParsing | Invoke-Expression
 ```
+Add lvim command to .bashrc or .zshrc:
+```
+export PATH="/root/.local/bin:$PATH"
+```
+or
+```
+export PATH="/home/<user>/.local/bin:$PATH"
+```
