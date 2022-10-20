@@ -1,7 +1,7 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "gruvbox"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -151,26 +151,26 @@ lvim.builtin.treesitter.highlight.enabled = true
 
 -- Additional Plugins
 lvim.plugins = {
-    {"folke/tokyonight.nvim"},
-    {"sbdchd/neoformat"},
-    {"ellisonleao/gruvbox.nvim"},
-    -- {"nvim-lua/popup.nvim"},
-    -- {"nvim-lua/plenary.nvim"},
-    -- {"nvim-telescope/telescope.nvim"},
-    {"nvim-telescope/telescope-media-files.nvim"},
-    -- {
-    --   "folke/trouble.nvim",
-    --   cmd = "TroubleToggle",
-    -- },
+  -- { "folke/tokyonight.nvim" },
+  { "sbdchd/neoformat" },
+  { "ellisonleao/gruvbox.nvim" },
+  -- {"nvim-lua/popup.nvim"},
+  -- {"nvim-lua/plenary.nvim"},
+  -- {"nvim-telescope/telescope.nvim"},
+  { "nvim-telescope/telescope-media-files.nvim" },
+  -- {
+  --   "folke/trouble.nvim",
+  --   cmd = "TroubleToggle",
+  -- },
 }
 
 require('telescope').load_extension('media_files')
-require'telescope'.setup {
+require 'telescope'.setup {
   extensions = {
     media_files = {
       -- filetypes whitelist
       -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-      filetypes = {"png", "webp", "jpg", "jpeg"},
+      filetypes = { "png", "webp", "jpg", "jpeg" },
       find_cmd = "rg" -- find command (defaults to `fd`)
     }
   },
@@ -197,3 +197,4 @@ vim.opt.relativenumber = true
 lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
 lvim.keys.normal_mode["<S-Enter>"] = "o<ESC>"
 lvim.keys.normal_mode["<space>lf"] = ":Neoformat<cr>"
+lvim.keys.insert_mode["jk"] = "<ESC>"
