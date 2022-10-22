@@ -5,6 +5,7 @@ Config path is ~/.config/lvim
 
 
 Project link https://github.com/LunarVim/LunarVim
+
 Install yapf for Neoformat working in python
 ```
 pip3 install yapf
