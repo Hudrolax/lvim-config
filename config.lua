@@ -10,15 +10,15 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = false
-lvim.colorscheme = "gruvbox"
+lvim.format_on_save.enabled = false
+lvim.colorscheme = "lunar"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-s>"] = ":Neoformat<cr>:w<cr>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -167,7 +167,7 @@ lvim.plugins = {
     {
       -- "folke/trouble.nvim",
       -- cmd = "TroubleToggle",
-      { "sbdchd/neoformat" },
+      {"sbdchd/neoformat" },
       { "ellisonleao/gruvbox.nvim" },
     },
 }
@@ -208,5 +208,3 @@ lvim.keys.insert_mode[",<space><space>"] = "<Esc>$a,<space>"
 
 lvim.keys.visual_mode["''"] = "c''<Esc>hp"
 lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
-
-lvim.keys.normal_mode["<space>w"] = ":Neoformat<cr>:w<cr>"
