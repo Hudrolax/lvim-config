@@ -202,3 +202,11 @@ lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-l>"] = "$"
 lvim.keys.normal_mode["<S-h>"] = "0"
 lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
+lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
+lvim.keys.insert_mode[":<space><space>"] = "<Esc>$a:<space>"
+lvim.keys.insert_mode[",<space><space>"] = "<Esc>$a,<space>"
+
+lvim.keys.visual_mode["''"] = "c''<Esc>hp"
+lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
+
+lvim.keys.normal_mode["<space>w"] = ":Neoformat<cr>:w<cr>"
