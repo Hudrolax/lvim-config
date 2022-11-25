@@ -18,7 +18,6 @@ lvim.colorscheme = "gruvbox"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
-lvim.keys.normal_mode["<C-s>"] = ":Neoformat<cr>:w<cr>"
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
@@ -196,15 +195,22 @@ vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 vim.opt.clipboard = "unnamed"
 lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
-lvim.keys.normal_mode["<S-Enter>"] = "o<ESC>"
+lvim.keys.normal_mode["<S-Enter>"] = "O<ESC>"
 lvim.keys.normal_mode["<space>lf"] = ":Neoformat<cr>"
 lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-l>"] = "$"
 lvim.keys.normal_mode["<S-h>"] = "0"
-lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
-lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
-lvim.keys.insert_mode[":<space><space>"] = "<Esc>$a:<space>"
-lvim.keys.insert_mode[",<space><space>"] = "<Esc>$a,<space>"
+
+lvim.keys.insert_mode[":<Enter><Enter>"] = "<Esc>$a:<Enter>"
+lvim.keys.insert_mode[",<Enter><Enter>"] = "<Esc>$a,<Enter>"
+lvim.keys.insert_mode[":<space><space>"] = "<Esc>la:<space>"
+lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
+lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
+lvim.keys.insert_mode[".<space><space>"] = "<Esc>la."
+lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
 
 lvim.keys.visual_mode["''"] = "c''<Esc>hp"
 lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
+
+lvim.keys.normal_mode["<C-s>"] = ":Neoformat | w<cr>"
+lvim.keys.normal_mode["<leader>w"] = "<C-s>"
