@@ -163,12 +163,12 @@ lvim.builtin.treesitter.highlight.enable = true
 
 -- Additional Plugins
 lvim.plugins = {
-    {
-      -- "folke/trouble.nvim",
-      -- cmd = "TroubleToggle",
-      {"sbdchd/neoformat" },
-      { "ellisonleao/gruvbox.nvim" },
-    },
+  {
+    -- "folke/trouble.nvim",
+    -- cmd = "TroubleToggle",
+    { "sbdchd/neoformat" },
+    { "ellisonleao/gruvbox.nvim" },
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
@@ -201,8 +201,8 @@ lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-l>"] = "$"
 lvim.keys.normal_mode["<S-h>"] = "0"
 
-lvim.keys.insert_mode[":<Enter><Enter>"] = "<Esc>$a:<Enter>"
-lvim.keys.insert_mode[",<Enter><Enter>"] = "<Esc>$a,<Enter>"
+lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
+lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
 lvim.keys.insert_mode[":<space><space>"] = "<Esc>la:<space>"
 lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
 lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
@@ -214,3 +214,11 @@ lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
 
 lvim.keys.normal_mode["<C-s>"] = ":Neoformat | w<cr>"
 lvim.keys.normal_mode["<leader>w"] = "<C-s>"
+
+-- move lines
+lvim.keys.normal_mode["A-j"] = ":m+<cr>"
+lvim.keys.normal_mode["A-k"] = ":m-2<cr>"
+lvim.keys.visual_mode["A-j"] = ":m '>+1<CR>"
+lvim.keys.visual_mode["A-k"] = ":m '>-2<CR>"
+lvim.keys.insert_mode["A-j"] = ":<Esc>m+<cr>"
+lvim.keys.insert_mode["A-k"] = ":<Esc>m-2<cr>"
