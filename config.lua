@@ -168,6 +168,18 @@ lvim.plugins = {
     -- cmd = "TroubleToggle",
     { "sbdchd/neoformat" },
     { "ellisonleao/gruvbox.nvim" },
+    -- auto-save
+    -- {
+    --   "Pocco81/auto-save.nvim",
+    --   config = function()
+    --     require("auto-save").setup()
+    --   end,
+    -- },
+    -- codi plug
+    -- {
+    --   "metakirby5/codi.vim",
+    --   cmd = "Codi",
+    -- },
   },
 }
 
@@ -201,17 +213,25 @@ lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-l>"] = "$"
 lvim.keys.normal_mode["<S-h>"] = "0"
 
+-- Insert mode helpers
 lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
 lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
 lvim.keys.insert_mode[":<space><space>"] = "<Esc>la:<space>"
 lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
 lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
 lvim.keys.insert_mode[".<space><space>"] = "<Esc>la."
+lvim.keys.insert_mode[".<space><space><space>"] = "<Esc>$a."
 lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
+lvim.keys.insert_mode["<space><space><space>"] = "<Esc>$a"
 
+-- visual selection
 lvim.keys.visual_mode["''"] = "c''<Esc>hp"
 lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
+lvim.keys.visual_mode["()"] = 'c()<Esc>hp'
+lvim.keys.visual_mode["[]"] = 'c[]<Esc>hp'
+lvim.keys.visual_mode["{}"] = 'c{}<Esc>hp'
 
+-- autoformat and save
 lvim.keys.normal_mode["<C-s>"] = ":Neoformat | w<cr>"
 lvim.keys.normal_mode["<leader>w"] = "<C-s>"
 
