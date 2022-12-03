@@ -242,3 +242,6 @@ lvim.keys.visual_mode["A-j"] = ":m '>+1<CR>"
 lvim.keys.visual_mode["A-k"] = ":m '>-2<CR>"
 lvim.keys.insert_mode["A-j"] = ":<Esc>m+<cr>"
 lvim.keys.insert_mode["A-k"] = ":<Esc>m-2<cr>"
+
+-- type: ignore
+lvim.keys.normal_mode['<C-i><C-g>'] = "a<space># type: ignore<Esc>"
