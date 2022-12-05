@@ -1,4 +1,5 @@
 --[[
+--
 lvim is the global options object
 
 Linters should be
@@ -169,12 +170,12 @@ lvim.plugins = {
     { "sbdchd/neoformat" },
     { "ellisonleao/gruvbox.nvim" },
     -- auto-save
-    -- {
-    --   "Pocco81/auto-save.nvim",
-    --   config = function()
-    --     require("auto-save").setup()
-    --   end,
-    -- },
+    {
+      "Pocco81/auto-save.nvim",
+      config = function()
+        require("auto-save").setup()
+      end,
+    },
     -- codi plug
     -- {
     --   "metakirby5/codi.vim",
@@ -223,6 +224,7 @@ lvim.keys.insert_mode[".<space><space>"] = "<Esc>la."
 lvim.keys.insert_mode[".<space><space><space>"] = "<Esc>$a."
 lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
 lvim.keys.insert_mode["<space><space><space>"] = "<Esc>$a"
+lvim.keys.insert_mode["f'"] = "f''<Esc>i"
 
 -- visual selection
 lvim.keys.visual_mode["''"] = "c''<Esc>hp"
