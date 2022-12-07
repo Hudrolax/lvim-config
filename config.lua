@@ -216,6 +216,7 @@ lvim.keys.normal_mode["<S-h>"] = "0"
 
 -- Insert mode helpers
 lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
+lvim.keys.insert_mode[";<Enter>"] = "<Esc>$a;<Enter>"
 lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
 lvim.keys.insert_mode[":<space><space>"] = "<Esc>la:<space>"
 lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
