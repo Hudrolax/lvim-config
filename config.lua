@@ -12,7 +12,7 @@ vim.opt.relativenumber = true
 lvim.log.level = "info"
 lvim.format_on_save = {
   enabled = true,
-  pattern = "*.lua",
+  -- pattern = "*.lua",
   timeout = 1000,
 }
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -199,7 +199,7 @@ lvim.keys.visual_mode["[]"] = 'c[]<Esc>hp'
 lvim.keys.visual_mode["{}"] = 'c{}<Esc>hp'
 
 -- autoformat and save
-lvim.keys.normal_mode["<C-s>"] = ":Neoformat | w<cr>"
+-- lvim.keys.normal_mode["<C-s>"] = ":Neoformat | w<cr>"
 lvim.keys.normal_mode["<leader>w"] = "<C-s>"
 
 -- move lines
