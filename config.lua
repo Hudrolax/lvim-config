@@ -95,6 +95,8 @@ lvim.builtin.treesitter.auto_install = true
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
   {
+    { "jose-elias-alvarez/null-ls.nvim" },
+    { "MunifTanjim/eslint.nvim" },
     { "sbdchd/neoformat" },
     { "ellisonleao/gruvbox.nvim" },
     -- auto-save
@@ -146,6 +148,13 @@ lvim.plugins = {
         lspconfig.emmet_ls.setup({ capabilities = capabilities })
       end,
     },
+    {
+      "windwp/nvim-ts-autotag",
+      config = function()
+        require("nvim-ts-autotag").setup()
+      end,
+    },
+    { "yardnsm/vim-import-cost" },
 
     -- "folke/trouble.nvim",
     -- cmd = "TroubleToggle",
@@ -183,8 +192,10 @@ lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
 lvim.keys.insert_mode[";<Enter>"] = "<Esc>$a;<Enter>"
 lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
 lvim.keys.insert_mode[":<space><space>"] = "<Esc>la:<space>"
+lvim.keys.insert_mode[";<space><space>"] = "<Esc>la;<space>"
 lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
 lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
+lvim.keys.insert_mode[";<space><space><space>"] = "<Esc>$a;<Esc>"
 lvim.keys.insert_mode[".<space><space>"] = "<Esc>la."
 lvim.keys.insert_mode[".<space><space><space>"] = "<Esc>$a."
 lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
@@ -218,4 +229,25 @@ vim.cmd [[
   let g:user_emmet_install_global = 0
   autocmd FileType html,css EmmetInstall
   let g:user_emmet_leader_key=','
-]]
+ ]]
+
+-- ESLint
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  {
+    exe = "eslint_d",
+    filetypes = {
+      "javascriptreact",
+      "javascript",
+      "typescriptreact",
+      "typescript",
+      "vue",
+    },
+  },
+}
+
+require 'nvim-treesitter.configs'.setup {
+  autotag = {
+    enable = true,
+  }
+}
