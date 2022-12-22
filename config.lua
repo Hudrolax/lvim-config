@@ -54,7 +54,7 @@ lvim.builtin.treesitter.auto_install = true
 -- ---configure a server manually. IMPORTANT: Requires `:LvimCacheReset` to take effect
 -- ---see the full default list `:lua =lvim.lsp.automatic_configuration.skipped_servers`
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
--- local opts = {} -- check the lspconfig documentation for a list of all possible options
+-- local opts = {} -- check the l:TSInstall cssmodules_lsspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. IMPORTANT: Requires `:LvimCacheReset` to take effect
@@ -130,6 +130,9 @@ lvim.plugins = {
               filetypes = {
                 "html",
                 "css",
+                "sass",
+                "less",
+                "scss",
                 "javascript",
                 "typescript",
                 "eruby",
@@ -155,6 +158,20 @@ lvim.plugins = {
       end,
     },
     { "yardnsm/vim-import-cost" },
+    {
+      "norcalli/nvim-colorizer.lua",
+      config = function()
+        require("colorizer").setup({ "css", "scss", "html", "javascript" }, {
+          RGB = true, -- #RGB hex codes
+          RRGGBB = true, -- #RRGGBB hex codes
+          RRGGBBAA = true, -- #RRGGBBAA hex codes
+          rgb_fn = true, -- CSS rgb() and rgba() functions
+          hsl_fn = true, -- CSS hsl() and hsla() functions
+          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        })
+      end,
+    },
 
     -- "folke/trouble.nvim",
     -- cmd = "TroubleToggle",
@@ -201,10 +218,12 @@ lvim.keys.insert_mode[".<space><space><space>"] = "<Esc>$a."
 lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
 lvim.keys.insert_mode["<space><space><space>"] = "<Esc>$a"
 lvim.keys.insert_mode["f'"] = "f''<Esc>i"
+lvim.keys.insert_mode["=><space><space>"] = "<Esc>la<space>=><space>"
 
 -- visual selection
 lvim.keys.visual_mode["''"] = "c''<Esc>hp"
 lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
+lvim.keys.visual_mode['``'] = 'c``<Esc>hp'
 lvim.keys.visual_mode["()"] = 'c()<Esc>hp'
 lvim.keys.visual_mode["[]"] = 'c[]<Esc>hp'
 lvim.keys.visual_mode["{}"] = 'c{}<Esc>hp'
@@ -250,4 +269,13 @@ require 'nvim-treesitter.configs'.setup {
   autotag = {
     enable = true,
   }
+}
+
+require 'lspconfig'.cssmodules_ls.setup {
+  -- provide your on_attach to bind keymappings
+  on_attach = custom_on_attach,
+  -- optionally
+  init_options = {
+    camelCase = 'dashes',
+  },
 }
