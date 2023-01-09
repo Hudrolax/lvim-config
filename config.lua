@@ -30,9 +30,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- lvim.builtin.which_key.mappings["W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" }
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
--- -- Change theme settings
--- lvim.colorscheme = "lunar"
-lvim.colorscheme = "gruvbox"
 
 -- After changing plugin config exit and reopen LunarVim, Run :PackerSync
 lvim.builtin.alpha.active = true
@@ -95,10 +92,11 @@ lvim.builtin.treesitter.auto_install = true
 -- -- Additional Plugins <https://www.lunarvim.org/docs/plugins#user-plugins>
 lvim.plugins = {
   {
-    { "jose-elias-alvarez/null-ls.nvim" },
+    -- { "jose-elias-alvarez/null-ls.nvim" },
     { "MunifTanjim/eslint.nvim" },
     { "sbdchd/neoformat" },
     { "ellisonleao/gruvbox.nvim" },
+
     -- auto-save
     {
       "Pocco81/auto-save.nvim",
@@ -140,6 +138,7 @@ lvim.plugins = {
                 "javascriptreact",
                 "svelte",
                 "vue",
+                "js",
               },
               root_dir = function(fname)
                 return vim.loop.cwd()
@@ -188,7 +187,7 @@ lvim.plugins = {
 -- })
 
 vim.opt.backup = false
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 vim.opt.swapfile = false
 vim.opt.relativenumber = true
@@ -200,7 +199,7 @@ vim.opt.clipboard = "unnamed"
 lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
 lvim.keys.normal_mode["<S-Enter>"] = "O<ESC>"
 -- lvim.keys.normal_mode["<space>lf"] = ":Neoformat<cr>"
-lvim.keys.insert_mode["jk"] = "<ESC>"
+-- lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-l>"] = "$"
 lvim.keys.normal_mode["<S-h>"] = "0"
 
@@ -208,25 +207,26 @@ lvim.keys.normal_mode["<S-h>"] = "0"
 lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
 lvim.keys.insert_mode[";<Enter>"] = "<Esc>$a;<Enter>"
 lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
-lvim.keys.insert_mode[":<space><space>"] = "<Esc>la:<space>"
-lvim.keys.insert_mode[";<space><space>"] = "<Esc>la;<space>"
-lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
-lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
-lvim.keys.insert_mode[";<space><space><space>"] = "<Esc>$a;<Esc>"
-lvim.keys.insert_mode[".<space><space>"] = "<Esc>la."
-lvim.keys.insert_mode[".<space><space><space>"] = "<Esc>$a."
+lvim.keys.insert_mode["::"] = "<Esc>la:<space>"
+lvim.keys.insert_mode[";;"] = "<Esc>la;<space>"
+-- lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
+-- lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
+-- lvim.keys.insert_mode[";<space><space><space>"] = "<Esc>$a;<Esc>"
+lvim.keys.insert_mode[".."] = "<Esc>la."
+lvim.keys.insert_mode["..."] = "<Esc>$a."
 lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
 lvim.keys.insert_mode["<space><space><space>"] = "<Esc>$a"
 lvim.keys.insert_mode["f'"] = "f''<Esc>i"
-lvim.keys.insert_mode["=><space><space>"] = "<Esc>la<space>=><space>"
+lvim.keys.insert_mode["=><space><space>"] = "<Esc>la<space>=><space>{};<Esc>hi<cr><Esc>O"
 
+-- [[]]
 -- visual selection
-lvim.keys.visual_mode["''"] = "c''<Esc>hp"
-lvim.keys.visual_mode['""'] = 'c""<Esc>hp'
-lvim.keys.visual_mode['``'] = 'c``<Esc>hp'
-lvim.keys.visual_mode["()"] = 'c()<Esc>hp'
-lvim.keys.visual_mode["[]"] = 'c[]<Esc>hp'
-lvim.keys.visual_mode["{}"] = 'c{}<Esc>hp'
+lvim.keys.visual_mode["'"] = "c''<Esc>hp"
+lvim.keys.visual_mode['"'] = 'c""<Esc>hp'
+lvim.keys.visual_mode['`'] = 'c``<Esc>hp'
+lvim.keys.visual_mode["("] = 'c()<Esc>hp'
+lvim.keys.visual_mode["["] = 'c[]<Esc>hp'
+lvim.keys.visual_mode["{"] = 'c{}<Esc>hp'
 
 -- autoformat and save
 -- lvim.keys.normal_mode["<C-s>"] = ":Neoformat | w<cr>"
@@ -273,9 +273,32 @@ require 'nvim-treesitter.configs'.setup {
 
 require 'lspconfig'.cssmodules_ls.setup {
   -- provide your on_attach to bind keymappings
-  on_attach = custom_on_attach,
+  -- on_attach = custom_on_attach,
   -- optionally
   init_options = {
     camelCase = 'dashes',
   },
 }
+
+-- -- Change theme settings
+-- lvim.colorscheme = "lunar"
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "hard", -- can be "hard", "soft" or empty string
+  palette_overrides = {
+    -- bright_green = "#990000",
+  },
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+lvim.colorscheme = "gruvbox"
