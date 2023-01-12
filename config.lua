@@ -199,27 +199,36 @@ vim.opt.clipboard = "unnamed"
 lvim.keys.normal_mode["<Enter>"] = "o<ESC>"
 lvim.keys.normal_mode["<S-Enter>"] = "O<ESC>"
 -- lvim.keys.normal_mode["<space>lf"] = ":Neoformat<cr>"
--- lvim.keys.insert_mode["jk"] = "<ESC>"
+lvim.keys.insert_mode["jk"] = "<ESC>"
 lvim.keys.normal_mode["<S-l>"] = "$"
 lvim.keys.normal_mode["<S-h>"] = "0"
 
 -- Insert mode helpers
-lvim.keys.insert_mode[":<Enter>"] = "<Esc>$a:<Enter>"
-lvim.keys.insert_mode[";<Enter>"] = "<Esc>$a;<Enter>"
-lvim.keys.insert_mode[",<Enter>"] = "<Esc>$a,<Enter>"
-lvim.keys.insert_mode["::"] = "<Esc>la:<space>"
-lvim.keys.insert_mode[";;"] = "<Esc>la;<space>"
--- lvim.keys.insert_mode[",<space><space>"] = "<Esc>la,<space>"
--- lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
--- lvim.keys.insert_mode[";<space><space><space>"] = "<Esc>$a;<Esc>"
-lvim.keys.insert_mode[".."] = "<Esc>la."
-lvim.keys.insert_mode["..."] = "<Esc>$a."
-lvim.keys.insert_mode["<space><space>"] = "<Esc>la"
+lvim.keys.insert_mode[":<space><space>"] = "<right>:<space>"
+lvim.keys.insert_mode[":<cr><cr>"] = "<right>:<cr>"
+lvim.keys.insert_mode[":<cr><cr><cr>"] = "<Esc>$a:<cr>"
+
+lvim.keys.insert_mode[";<cr><cr>"] = "<right>;<Enter>"
+lvim.keys.insert_mode[";<cr><cr><cr>"] = "<Esc>$a;<Enter>"
+lvim.keys.insert_mode[";<space><space>"] = "<right>;"
+lvim.keys.insert_mode[";<space><space><space>"] = "<Esc>$a;<Esc>"
+
+lvim.keys.insert_mode[".<space><space>"] = "<right>."
+lvim.keys.insert_mode[".<space><space><space>"] = "<Esc>$a."
+lvim.keys.insert_mode[".<cr><cr>"] = "<right>.<cr>"
+lvim.keys.insert_mode[".<cr><cr><cr>"] = "<Esc>$a.<cr>"
+
+lvim.keys.insert_mode[",<space><space>"] = "<right>,<space>"
+lvim.keys.insert_mode[",<space><space><space>"] = "<Esc>$a,<Esc>"
+lvim.keys.insert_mode[",<cr><cr>"] = "<right>,<cr>"
+lvim.keys.insert_mode[",<cr><cr><cr>"] = "<Esc>$a,<cr>"
+
+lvim.keys.insert_mode["<space><space>"] = "<right>"
 lvim.keys.insert_mode["<space><space><space>"] = "<Esc>$a"
 lvim.keys.insert_mode["f'"] = "f''<Esc>i"
-lvim.keys.insert_mode["=><space><space>"] = "<Esc>la<space>=><space>{};<Esc>hi<cr><Esc>O"
+lvim.keys.insert_mode["=><space><space>"] = "<right><space>=><space>{}<Esc>i"
+lvim.keys.insert_mode["{<cr><cr>"] = "<right><space>{}<Esc>i<cr>"
 
--- [[]]
 -- visual selection
 lvim.keys.visual_mode["'"] = "c''<Esc>hp"
 lvim.keys.visual_mode['"'] = 'c""<Esc>hp'
